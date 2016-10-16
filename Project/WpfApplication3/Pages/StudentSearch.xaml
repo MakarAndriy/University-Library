@@ -1,0 +1,50 @@
+﻿<Page x:Class="WpfApplication3.StudentSearch"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:vm="clr-namespace:WpfApplication3.ViewModels"
+      Title="MainPage"
+      d:DesignHeight="328.195"
+      d:DesignWidth="517.669"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <vm:StudentSearchViewModel x:Key="viewModel" />
+    </Page.Resources>
+
+    <Grid DataContext="{Binding Source={StaticResource viewModel}}">
+
+        <Grid>
+
+            <TextBox x:Name="searchBox"
+                     Width="120"
+                     Height="23"
+                     Margin="58,66,0,0"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Top"
+                     Text="{Binding SearchValue,
+                                    Source={StaticResource viewModel},
+                                    Mode=TwoWay}"
+                     TextWrapping="Wrap" />
+
+            <TextBlock Width="120"
+                       Height="21"
+                       Margin="58,40,0,0"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Text="Enter ID of a student"
+                       TextWrapping="Wrap" />
+
+            <TextBlock Width="102"
+                       Margin="358,67,0,0"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       RenderTransformOrigin="0.898,0.603">
+                <Hyperlink NavigateUri="StudentDetails.xaml">Show Student Info</Hyperlink>
+            </TextBlock>
+        </Grid>
+
+    </Grid>
+
+</Page>
