@@ -17,8 +17,8 @@ namespace WpfApplication3.Repository
             get
             {
                 SqlConnectionStringBuilder str = new SqlConnectionStringBuilder();
-
-                str.DataSource = @"(local)\SQLEXPRESS";
+                //Review DM: I think it would be beter write connection string in app.congf, because if U will create install file user cant change connection string.
+                str.DataSource = @"LEX_PC\SQLEXPRESS";
                 str.InitialCatalog = "UniversityLibraryDb";
                 str.IntegratedSecurity = true;
 
@@ -37,13 +37,15 @@ namespace WpfApplication3.Repository
                     showUserInfo.Parameters.Add(new SqlParameter("@Photo", photo));
 
                     connection.Open();
-
+                    //Review DM: why U don't use result? 
                     var result = showUserInfo.ExecuteNonQuery();
                 }
+                //Review DM: your cath will re-throw Exception to UI, I'll delete that catch.
                 catch (Exception)
                 {
                     throw;
                 }
+                //Review DM: you use statement using for connection string, and it will close automaticly
                 finally
                 {
                     connection.Close();
@@ -75,6 +77,7 @@ namespace WpfApplication3.Repository
 								Photo = reader.GetValue(reader.GetOrdinal("Photo")) as byte[],						
 								Id = (int)(reader.GetValue(reader.GetOrdinal("Id")))
                             };
+                            //Review DM: U don't need break here, because uoyr query will return only one row.
                             break;
                         }
                     }

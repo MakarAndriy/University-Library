@@ -62,7 +62,8 @@ namespace WpfApplication3.Pages
 				userRepo.UpdateUserPhoto(UserID.Text, _imageBytes);
             }
         }
-		private byte[] BitmapSourceToByteArray(BitmapSource image)
+        //Review DM: isn't used.
+        private byte[] BitmapSourceToByteArray(BitmapSource image)
 		{
 			using (var stream = new MemoryStream())
 			{
@@ -72,7 +73,7 @@ namespace WpfApplication3.Pages
 				return stream.ToArray();
 			}
 		}
-
+        //Review DM: user.Photo - System.NullReferenceException. don't do checking for null id.
         // Load an image from the database
         private void LoadButton_OnClick(object sender, RoutedEventArgs e)
         {

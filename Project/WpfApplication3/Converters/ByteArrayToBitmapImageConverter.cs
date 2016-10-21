@@ -10,16 +10,26 @@ using System.Windows.Media.Imaging;
 
 namespace WpfApplication3.Converters
 {
-	public class ByteArrayToBitmapImageConverter : IValueConverter
+    //Review DM: read about YAGNI pattern
+    public class ByteArrayToBitmapImageConverter : IValueConverter
 	{
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			var rawImageData = value as byte[];
-			if (rawImageData == null)
+            //Review DM: I think it wiil be beter ti use
+            /*
+            if (rawImageData != null)
+            {
+            using (MemoryStream strm = new MemoryStream())......
+            }
+            */
+            //Always use curly braces ({ and }) in conditional statements.
+            if (rawImageData == null)
 				return null;
-
-			var bitmapImage = new System.Windows.Media.Imaging.BitmapImage();
-			using (MemoryStream strm = new MemoryStream())
+            //Review DM: U don't need write full direction, U use using System.Windows.Media.Imaging; in begin of file.
+            var bitmapImage = new System.Windows.Media.Imaging.BitmapImage();
+            //Review DM: U can use var, write full name of variables.
+            using (MemoryStream strm = new MemoryStream())
 			{
 				strm.Write(rawImageData, 0, rawImageData.Length);
 				strm.Position = 0;
@@ -34,7 +44,8 @@ namespace WpfApplication3.Converters
 				bitmapImage.EndInit();
 				
 			}
-			return bitmapImage;
+            //Revivew DM: I would prefer to use empty line space before return statement
+            return bitmapImage;
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

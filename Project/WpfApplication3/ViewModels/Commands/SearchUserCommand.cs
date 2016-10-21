@@ -9,8 +9,9 @@ namespace WpfApplication3.ViewModels.Commands
 {
     public class SearchUserCommand: ICommand
     {
+        //Review DM: YAGNI...
         private StudentDetailsViewModel _viewModel;
-
+        
         public SearchUserCommand(StudentDetailsViewModel viewModel)
         {
             _viewModel = viewModel;
@@ -19,6 +20,7 @@ namespace WpfApplication3.ViewModels.Commands
         public bool CanExecute(object parameter)
         {
             var searchValue = parameter as string;
+            //Review DM: I would prefer use tyrnary operator here
             if (string.IsNullOrWhiteSpace(searchValue))
             {
                 return false;
@@ -28,6 +30,7 @@ namespace WpfApplication3.ViewModels.Commands
 
         public event EventHandler CanExecuteChanged;
 
+        //Review DM: please delete comented code :)
         public void Execute(object parameter)
         {
             //var searchValue = parameter as string;

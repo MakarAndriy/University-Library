@@ -14,7 +14,8 @@ namespace WpfApplication3.ViewModels
     public class StudentDetailsViewModel : BaseViewModel
     {
 
-        private readonly UserRepository _userRepository; 
+        private readonly UserRepository _userRepository;
+        //Review DM: I'll use int value here.
         private readonly string _studentId;
         private UserModel _user;
 

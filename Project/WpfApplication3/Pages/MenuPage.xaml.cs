@@ -24,7 +24,7 @@ namespace WpfApplication3.Pages
         {
             InitializeComponent();
         }
-
+       
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("Pages/StudentSearch.xaml", UriKind.Relative));
@@ -34,7 +34,7 @@ namespace WpfApplication3.Pages
         {
 
         }
-
+        //Review DM: this will never be caled
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("Pages/PhotoUpload.xaml", UriKind.Relative));

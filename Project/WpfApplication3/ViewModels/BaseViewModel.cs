@@ -10,7 +10,7 @@ namespace WpfApplication3.ViewModels
     public class BaseViewModel: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
+        
         protected void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)
